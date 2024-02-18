@@ -1,0 +1,24 @@
+SELECT YEAR(enrolment_date) AS anno_iscrizione, COUNT(id) AS num_studenti
+FROM `students`
+GROUP BY anno_iscrizione;
+
+SELECT office_address, COUNT()
+FROM `teachers`
+GROUP BY office_address;
+
+SELECT exam_id, ROUND(AVG(vote), 2) AS voto_medio
+FROM `exam_student`
+GROUP BY exam_id;
+
+SELECT department_id, COUNT(id) AS num_cdl
+FROM `degrees`
+GROUP BY department_id;
+
+
+
+SELECT students.id, students.name, students.surname, degrees.id, degrees.name
+FROM `students`
+JOIN degrees
+ON students.degree_id = degrees.id
+WHERE degrees.name = 'corso di laurea in economia'
+ORDER BY students.id;
